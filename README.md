@@ -1,7 +1,3 @@
-# **Warning**
-
-After observing these finding you might become BFs with the Huttenhower Lab and become a biobaker
-
 # Transparency and Reproducibility
 
 This repository contains:
