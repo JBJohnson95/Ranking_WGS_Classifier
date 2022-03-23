@@ -160,13 +160,13 @@ for (k in 1:length(input)){
   plot(RDP_means,Qiime_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized RDP",ylab="Log Normalized Qiime",
        main = paste("China Qiime vs RDP Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
        col= ifelse(Qiime_Adjusted_Pvalue>0.05&RDP_Adjusted_Pvalue>0.05,"black",
-                   ifelse(Qiime_Adjusted_Pvalue<=0.05&RDP_Adjusted_Pvalue>0.05,"red",
-                          ifelse(Qiime_Adjusted_Pvalue>0.05&RDP_Adjusted_Pvalue<=0.05,"blue","purple"))),pch=16)
+                   ifelse(Qiime_Adjusted_Pvalue<=0.05&RDP_Adjusted_Pvalue>0.05,"dark green",
+                          ifelse(Qiime_Adjusted_Pvalue>0.05&RDP_Adjusted_Pvalue<=0.05,"orange","purple"))),pch=16)
   
   legend("topleft",inset=c(.1,0),c("Insignificant after correction for Both ",
                                    "FDR Significant only Qiime","FDR Significant only RDP","FDR Significant for Both"),
          pch = c(16, 16),cex=0.8,
-         col=c("black","red","blue","purple")   )
+         col=c("black","dark green","orange","purple")   )
   abline(0,1)
   
   labeled_index=order(-(RDP_means+Qiime_means))[1:5]
