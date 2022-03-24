@@ -126,7 +126,7 @@ for (k in 1:length(input)){
   }
   FDR_Corrected_pValuesSampleType_Normalized_myT1=p.adjust(pValuesSampleType_RDP, method = "BH")
   
-  #Kruskal Wallis test for Qiime
+  #Kruskal Wallis test for QIIME
   pValuesSampleType_Qiime=vector()
   Name_Qiime <- vector()
   
@@ -176,7 +176,7 @@ for (k in 1:length(input)){
   }
   maxCors_1[1] <- NA
 
-  #Qiime data is labelled as _2
+  #QIIME data is labelled as _2
   
   maxCors_2 <- vector(length=ncol(ordered_myT2))
   numCols_2 <- ncol(ordered_myT2)
@@ -213,12 +213,12 @@ for (k in 1:length(input)){
   dev.off()
   
   
-  pdf(paste("Vanderbilt_16S_Normalized_Qiime_Highest_Spearman_",input[k],".pdf",sep=""))
+  pdf(paste("Vanderbilt_16S_Normalized_QIIME_Highest_Spearman_",input[k],".pdf",sep=""))
   plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Mean",
-       ylab="Rho",main=paste("Vanderbilt Qiime Spearman at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
-       col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","dark green"),pch=16)
-  legend("bottom",inset=c(0,.01),c("Insignificant","Significant for Qiime"),
-         pch = c(16, 16),cex=0.8,col=c("black","dark green") )
+       ylab="Rho",main=paste("Vanderbilt QIIME Spearman at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
+       col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","pink"),pch=16)
+  legend("bottom",inset=c(0,.01),c("Insignificant","Significant for QIIME"),
+         pch = c(16, 16),cex=0.8,col=c("black","pink") )
   dev.off()
   
 }

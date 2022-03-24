@@ -188,7 +188,7 @@ for (k in 1:length(input)){
     simCors_1[i] <- cor(dataSimCol,10^ordered_Normalized_myT1[,colIndex],method="spearman" )
   }
   
-  #Qiime data is labelled as _2
+  #QIIME data is labelled as _2
   
   maxCors_2 <- vector(length=ncol(ordered_myT2))
   sums_2 <- apply(ordered_myT2[,1:ncol(ordered_myT2)], 2, sum)
@@ -265,13 +265,12 @@ for (k in 1:length(input)){
   points(simMeans_1, simCors_1,col="green")
   dev.off()
   
-  pdf(paste("China_Highest_Poisson_Simulated_Spearman_for_Qiime_at_",input[k],".pdf",sep=""))
+  pdf(paste("China_Highest_Poisson_Simulated_Spearman_for_QIIME_at_",input[k],".pdf",sep=""))
   plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Mean",
-       ylab="Rho",main=paste("China Qiime Spearman vs Simulated at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
-       col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","dark green"),pch=16)
-  legend("bottom",inset=c(0,max(maxCors_2)*.1),c("Insignificant","Significant for Qiime","Simulated Data"),
-         pch = c(16, 16,16),cex=0.8,col=c("black","dark green","green") )
+       ylab="Rho",main=paste("China QIIME Spearman vs Simulated at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
+       col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","pink"),pch=16)
+  legend("bottom",inset=c(0,max(maxCors_2)*.1),c("Insignificant","Significant for QIIME","Simulated Data"),
+         pch = c(16, 16,16),cex=0.8,col=c("black","pink","green") )
   points(simMeans_2, simCors_2,col="green")
   dev.off()
-  
 }

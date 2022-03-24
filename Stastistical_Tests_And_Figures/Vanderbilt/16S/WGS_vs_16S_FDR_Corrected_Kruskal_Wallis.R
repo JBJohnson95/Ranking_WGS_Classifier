@@ -100,7 +100,7 @@ for (k in 1:length(input)){
   }
   FDR_Corrected_pValuesSampleType_RDP=p.adjust(pValuesSampleType_RDP, method = "BH")
   
-  #Kruskal Wallis test for Qiime
+  #Kruskal Wallis test for QIIME
   pValuesSampleType_Qiime=vector()
   Name_Qiime <- vector()
   
@@ -156,7 +156,7 @@ for (k in 1:length(input)){
   FDR_Corrected_pValuesSampleType_myT4=p.adjust(pValuesSampleType_myT4, method = "BH")
   
  
-  #RDP is Table 1, Qiime is Table 2, Kraken is Table 3, Metaphlan is Table 4
+  #RDP is Table 1, QIIME is Table 2, Kraken is Table 3, Metaphlan is Table 4
   #This merges the different taxanomic databases together
   taxa_names=unique(c(myT1_colnames,myT2_colnames,myT3_colnames,myT4_colnames))
   RDP_means=rep(0,length(taxa_names))
@@ -240,17 +240,17 @@ for (k in 1:length(input)){
   R2=summary(lm(Kraken_means~Qiime_means))$r.squared
   R2=format(round(R2,digits=3))
   
-  pdf(paste("Kruskal_Wallis_Vanderbilt_Kraken2_vs_Qiime_Average_Means_",input[k],"_16S.pdf",sep=""))
-  plot(Qiime_means,Kraken_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized Qiime",ylab="Log Normalized Kraken2",
-       main = paste("Vanderbilt Kraken2 vs Qiime Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
+  pdf(paste("Kruskal_Wallis_Vanderbilt_Kraken2_vs_QIIME_Average_Means_",input[k],"_16S.pdf",sep=""))
+  plot(Qiime_means,Kraken_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized QIIME",ylab="Log Normalized Kraken2",
+       main = paste("Vanderbilt Kraken2 vs QIIME Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
        col= ifelse(Qiime_Adjusted_Pvalue>0.05&Kraken_Adjusted_Pvalue>0.05,"black",
-                   ifelse(Qiime_Adjusted_Pvalue<=0.05&Kraken_Adjusted_Pvalue>0.05,"darkgreen",
+                   ifelse(Qiime_Adjusted_Pvalue<=0.05&Kraken_Adjusted_Pvalue>0.05,"pink",
                           ifelse(Qiime_Adjusted_Pvalue>0.05&Kraken_Adjusted_Pvalue<=0.05,"blue","purple"))),pch=16)
   
   legend("topleft",inset=c(.1,0),c("Insignificant after correction for Both ",
-                                   "FDR Significant only Qiime","FDR Significant only Kraken2","FDR Significant for Both"),
+                                   "FDR Significant only QIIME","FDR Significant only Kraken2","FDR Significant for Both"),
          pch = c(16, 16),cex=0.8,
-         col=c("black","darkgreen","blue","purple")   )
+         col=c("black","pink","blue","purple")   )
   abline(0,1)
   
   labeled_index=order(-(Qiime_means+Kraken_means))[1:5]
@@ -264,17 +264,17 @@ for (k in 1:length(input)){
   R2=summary(lm(Metaphlan_means~Qiime_means))$r.squared
   R2=format(round(R2,digits=3))
   
-  pdf(paste("Kruskal_Wallis_Vanderbilt_Metaphlan2_vs_Qiime_Average_Means_",input[k],"_16S.pdf",sep=""))
-  plot(Qiime_means,Metaphlan_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized Qiime",ylab="Log Normalized Metaphlan2",
-       main = paste("Vanderbilt Metaphlan2 vs Qiime Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
+  pdf(paste("Kruskal_Wallis_Vanderbilt_Metaphlan2_vs_QIIME_Average_Means_",input[k],"_16S.pdf",sep=""))
+  plot(Qiime_means,Metaphlan_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized QIIME",ylab="Log Normalized Metaphlan2",
+       main = paste("Vanderbilt Metaphlan2 vs QIIME Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
        col= ifelse(Qiime_Adjusted_Pvalue>0.05&Metaphlan_Adjusted_Pvalue>0.05,"black",
-                   ifelse(Qiime_Adjusted_Pvalue<=0.05&Metaphlan_Adjusted_Pvalue>0.05,"darkgreen",
+                   ifelse(Qiime_Adjusted_Pvalue<=0.05&Metaphlan_Adjusted_Pvalue>0.05,"pink",
                           ifelse(Qiime_Adjusted_Pvalue>0.05&Metaphlan_Adjusted_Pvalue<=0.05,"red","purple"))),pch=16)
   
   legend("topleft",inset=c(.1,0),c("Insignificant after correction for Both ",
-                                   "FDR Significant only Qiime","FDR Significant only Metaphlan2","FDR Significant for Both"),
+                                   "FDR Significant only QIIME","FDR Significant only Metaphlan2","FDR Significant for Both"),
          pch = c(16, 16),cex=0.8,
-         col=c("black","darkgreen","red","purple")   )
+         col=c("black","pink","red","purple")   )
   abline(0,1)
   
   labeled_index=order(-(Qiime_means+Metaphlan_means))[1:5]

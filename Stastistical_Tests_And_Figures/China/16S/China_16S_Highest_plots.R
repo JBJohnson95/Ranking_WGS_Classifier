@@ -101,7 +101,7 @@ for (k in 1:length(input)){
   }
   FDR_Corrected_pValuesruralurban_Normalized_myT1=p.adjust(pValuesruralurban_Normalized_myT1, method = "BH")
   
-  #Kruskal Wallis test for Qiime
+  #Kruskal Wallis test for QIIME
   pValuesruralurban_Normalized_myT2=vector()
   Name_Normalized_myT2 <- vector()
   
@@ -152,7 +152,7 @@ for (k in 1:length(input)){
   }
   maxCors_1[1] <- NA
   
-  #Qiime data is labelled as _2
+  #QIIME data is labelled as _2
   
   maxCors_2 <- vector(length=ncol(ordered_myT2))
   numCols_2 <- ncol(ordered_myT2)
@@ -187,14 +187,13 @@ for (k in 1:length(input)){
   legend("bottom",inset=c(0,.01),c("Insignificant","Significant for RDP"), pch = c(16, 16),cex=0.8,
          col=c("black","orange") )
   dev.off()
-  
-  pdf(paste("China_Normalized_Qiime_Highest_Spearman_",input[k],".pdf",sep=""))
-  plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Average value of Taxa",
-       ylab="Rho",main=paste("China Qiime Spearman test at ",input[k],sep=""),ylim=c(-1,1),
-       col= ifelse(ordered_FDR_Normalized_myT2>0.05,"black","dark green"),pch=16 )
-  legend("bottom",inset=c(0,.01),c("Insignificant","Significant for Qiime"),pch = c(16, 16),cex=0.8,
-         col=c("black","dark green") )
-  dev.off()
 
+  pdf(paste("China_Normalized_QIIME_Highest_Spearman_",input[k],".pdf",sep=""))
+  plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Average value of Taxa",
+       ylab="Rho",main=paste("China QIIME Spearman test at ",input[k],sep=""),ylim=c(-1,1),
+       col= ifelse(ordered_FDR_Normalized_myT2>0.05,"black","pink"),pch=16 )
+  legend("bottom",inset=c(0,.01),c("Insignificant","Significant for QIIME"),pch = c(16, 16),cex=0.8,
+         col=c("black","pink") )
+  dev.off()
 }
 

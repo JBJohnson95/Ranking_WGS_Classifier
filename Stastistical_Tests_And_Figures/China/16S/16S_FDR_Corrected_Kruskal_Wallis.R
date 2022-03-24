@@ -112,7 +112,7 @@ for (k in 1:length(input)){
   }
   FDR_Corrected_pValuesruralurban_RDP_Normalized=p.adjust(pValuesruralurban_RDP_Normalized, method = "BH")
   
-  #Kruskal Wallis test for Qiime
+  #Kruskal Wallis test for QIIME
   pValuesruralurban_Qiime_Normalized=vector()
   Name_Qiime_Normalized <- vector()
   
@@ -156,17 +156,17 @@ for (k in 1:length(input)){
   R2=summary(lm(Qiime_means~RDP_means))$r.squared
   R2=format(round(R2,digits=3))
   
-  pdf(paste("Kruskal_Wallis_China_Qiime_vs_RDP_Average_Means_",input[k],"_16S.pdf",sep=""))
-  plot(RDP_means,Qiime_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized RDP",ylab="Log Normalized Qiime",
-       main = paste("China Qiime vs RDP Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
+  pdf(paste("Kruskal_Wallis_China_QIIME_vs_RDP_Average_Means_",input[k],"_16S.pdf",sep=""))
+  plot(RDP_means,Qiime_means,xlim =c(0,8),ylim=c(0,8),xlab = "Log Normalized RDP",ylab="Log Normalized QIIME",
+       main = paste("China QIIME vs RDP Averge Value at ",input[k]," level\nR2 is ",R2,sep=""),
        col= ifelse(Qiime_Adjusted_Pvalue>0.05&RDP_Adjusted_Pvalue>0.05,"black",
-                   ifelse(Qiime_Adjusted_Pvalue<=0.05&RDP_Adjusted_Pvalue>0.05,"dark green",
+                   ifelse(Qiime_Adjusted_Pvalue<=0.05&RDP_Adjusted_Pvalue>0.05,"pink",
                           ifelse(Qiime_Adjusted_Pvalue>0.05&RDP_Adjusted_Pvalue<=0.05,"orange","purple"))),pch=16)
   
   legend("topleft",inset=c(.1,0),c("Insignificant after correction for Both ",
-                                   "FDR Significant only Qiime","FDR Significant only RDP","FDR Significant for Both"),
+                                   "FDR Significant only QIIME","FDR Significant only RDP","FDR Significant for Both"),
          pch = c(16, 16),cex=0.8,
-         col=c("black","dark green","orange","purple")   )
+         col=c("black","pink","orange","purple")   )
   abline(0,1)
   
   labeled_index=order(-(RDP_means+Qiime_means))[1:5]
@@ -174,5 +174,4 @@ for (k in 1:length(input)){
        pos=4,cex=0.6,font=2)
   
   dev.off()
-  
 }
