@@ -242,7 +242,7 @@ pdf(paste("China_Highest_Poisson_Simulated_Spearman_for_Kraken2_at_",input[k],".
 plot(ordered_Normalized_Mean_myT1, maxCors_1,xlab = "Log Mean",
      ylab="Rho",main=paste("China Kraken2 Spearman vs Simulated at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
      col= ifelse(ordered_FDR_Normalized_myT1[-c(1)]>0.05,"black","blue"),pch=16)
-legend("bottom",inset=c(0,max(maxCors_1)*.1),c("Insignificant","Significant for Kraken2","Simulated Data"),
+legend("bottom",c("Insignificant","Significant for Kraken2","Simulated Data"),
        pch = c(16, 16,16),cex=0.8,col=c("black","blue","green") )
 points(simMeans_1, simCors_1,col="green")
 dev.off()
@@ -251,7 +251,7 @@ pdf(paste("China_Highest_Poisson_Simulated_Spearman_for_Metaphlan2_at_",input[k]
 plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Mean",
      ylab="Rho",main=paste("China Metaphlan2 Spearman vs Simulated at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
      col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","red"),pch=16)
-legend("bottom",inset=c(0,max(maxCors_2)*.1),c("Insignificant","Significant for Metaphlan2","Simulated Data"),
+legend("bottom",c("Insignificant","Significant for Metaphlan2","Simulated Data"),
        pch = c(16, 16,16),cex=0.8,col=c("black","red","green") )
 points(simMeans_2, simCors_2,col="green")
 dev.off()

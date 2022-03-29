@@ -169,7 +169,7 @@ for (k in 1:length(input)){
   plot(ordered_Normalized_Mean_myT1, maxCors_1,xlab = "Log Mean",
        ylab="Rho",main=paste("Pig Gut Kraken2 Spearman at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
        col= ifelse(ordered_FDR_Normalized_myT1[-c(1)]>0.05,"black","blue"),pch=16)
-  legend("bottom",inset=c(0,max(maxCors_1)*.1),c("Insignificant","Significant for Kraken2"),
+  legend("bottom",c("Insignificant","Significant for Kraken2"),
          pch = c(16, 16),cex=0.8,col=c("black","blue") )
   dev.off()
   
@@ -177,7 +177,7 @@ for (k in 1:length(input)){
   plot(ordered_Normalized_Mean_myT2, maxCors_2,xlab = "Log Mean",
        ylab="Rho",main=paste("Pig Gut Metaphlan2 Spearman at ",input[k],sep=""),ylim=c(-1,1),xlim=c(0,6.5),
        col= ifelse(ordered_FDR_Normalized_myT2[-c(1)]>0.05,"black","red"),pch=16)
-  legend("bottom",inset=c(0,max(maxCors_2)*.1),c("Insignificant","Significant for Metaphlan2"),
+  legend("bottom",c("Insignificant","Significant for Metaphlan2"),
          pch = c(16, 16),cex=0.8,col=c("black","red") )
   dev.off()
   
