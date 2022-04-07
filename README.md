@@ -7,14 +7,14 @@ Please Note that all directory paths will need to be to updated based upon your 
 
 # **Manuscript**
 
-The manuscript for this project is currently available through              bioarhive placeholder
+The manuscript for this project is currently available at https://www.biorxiv.org/content/10.1101/2022.04.04.487034v1
 
-Title: Systematic classification error profoundly impacts inference in high-depth WGS datasets
+Title: Systematic classification error profoundly impacts inference in high-depth Whole Genome Shotgun Sequencing datasets
 
 Authors:
 James Johnson, Shan Sun, Anthony A. Fodor
 
-doi:          placeholder
+doi: https://doi.org/10.1101/2022.04.04.487034 
 
 This article is a preprint and has not been peer-reviewed.
 
